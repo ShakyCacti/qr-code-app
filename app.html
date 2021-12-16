@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .heading {
+            text-align: center;
+            color: red;
+            font-family: "Noto Sans", Arial;
+            font-size: 24px;
+            margin: auto;
+        }
+        .body-text {
+            text-align: center;
+            font-family: "Noto Sans", Arial;
+            background-color: #eee;
+            font-size: 16px;
+            margin: auto;
+        }
+        .form {
+            text-align: center;
+            align-items: center;
+            font-size: 16px;
+            font-family: "Noto Sans", Arial;
+            background-color: #ddd;
+            margin: auto;
+        }
+        #qrcode {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #complete-text {
+            margin: auto;
+            color: red;
+            font-size: 24px;
+        }
+    </style>
+    <head>
+        <title>QR Code Generator</title>
+    </head>
+
+    <body>
+        <div class="heading">
+           <h1>QR Code Generator!</h1>
+        </div>
+        <div class="body-text">
+            <br>
+            <p>Welcome to my QR Code Generator.</p>
+            <p>Enter some text / a URL below: </p>
+            <br>
+        </div>
+
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+        <div class="form">
+
+
+            <form>
+                <input type="url" id="textbox" name="textbox" placeholder="Put something here" required />
+                <button type="button" onclick="generateQRCode()">
+                  Generate!
+                </button>
+              </form>
+            
+              <div id="qrcode-container">
+                <div id="qrcode" class="qrcode"></div>
+              </div>
+            
+              <script type="text/javascript">
+                function generateQRCode() {
+                  let textbox = document.getElementById("textbox").value;
+                  if (textbox) {
+                    let qrcodeContainer = document.getElementById("qrcode");
+                    qrcodeContainer.innerHTML = "";
+                    new QRCode(qrcodeContainer, textbox);
+                    document.getElementById("qrcode-container").style.display = "flex";
+                  } else {
+                    alert("Please enter a valid URL");
+                  }
+                }
+              </script>
+            </form>
+        </div>
+    </body>
+</html>
